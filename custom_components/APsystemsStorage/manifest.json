@@ -1,5 +1,5 @@
 {
-  "domain": "APsystemsStorage",
+  "domain": "apsystems_storage",
   "name": "APsystemsStorage",
   "codeowners": ["@APsystems"],
   "config_flow": true,
