@@ -1,0 +1,8 @@
+{
+  "name": "APsystemsStorage",
+  "content_in_root": false,
+  "filename": "apsystems_storage",
+  "country": [],
+  "homeassistant": "2024.1.0",
+  "render_readme": true
+}
