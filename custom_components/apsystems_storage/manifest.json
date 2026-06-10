@@ -1,0 +1,11 @@
+{
+  "domain": "apsystems_storage",
+  "name": "APsystems Storage",
+  "codeowners": ["@Echo000926"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/Echo000926/APsystemsStorageHAPublic",
+  "iot_class": "local_polling",
+  "requirements": [],
+  "version": "2.0.0"
+}

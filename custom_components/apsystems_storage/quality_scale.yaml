@@ -1,0 +1,104 @@
+rules:
+  # ===== Bronze rules =====
+  action-setup: done
+  appropriate-polling: done
+  brands: done
+  common-modules: done
+  config-flow-test-coverage:
+    status: exempt
+    comment: Custom integration, test coverage is maintained separately
+  config-flow: done
+  dependency-transparency: done
+  docs-actions:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  docs-high-level-description:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  docs-installation-instructions:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  docs-removal-instructions:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  entity-event-setup: done
+  entity-unique-id: done
+  has-entity-name: done
+  runtime-data: done
+  test-before-configure: done
+  test-before-setup: done
+  unique-config-entry: done
+
+  # ===== Silver rules =====
+  action-exceptions: done
+  config-entry-unloading: done
+  docs-configuration-parameters:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  docs-installation-parameters:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  entity-unavailable: done
+  integration-owner: done
+  log-when-unavailable: done
+  parallel-updates:
+    status: exempt
+    comment: Integration uses DataUpdateCoordinator which handles parallel updates
+  reauthentication-flow:
+    status: exempt
+    comment: Local device API does not require authentication
+  test-coverage:
+    status: exempt
+    comment: Custom integration, test coverage is maintained separately
+
+  # ===== Gold rules =====
+  devices: done
+  diagnostics: done
+  discovery-update-info:
+    status: exempt
+    comment: Device discovery not supported, IP-based configuration required
+  discovery:
+    status: exempt
+    comment: Device discovery not supported, IP-based configuration required
+  docs-data-update:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  docs-examples:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  docs-known-limitations:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  docs-supported-devices:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  docs-supported-functions:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  docs-troubleshooting:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  docs-use-cases:
+    status: exempt
+    comment: Custom integration, documentation maintained in GitHub repository
+  dynamic-devices:
+    status: exempt
+    comment: Single device per config entry
+  entity-category: done
+  entity-device-class: done
+  entity-disabled-by-default: done
+  entity-translations: done
+  exception-translations: done
+  icon-translations: done
+  reconfiguration-flow: done
+  repair-issues:
+    status: exempt
+    comment: Local device integration does not require repair issues
+  stale-devices:
+    status: exempt
+    comment: Single device per config entry
+
+  # ===== Platinum rules =====
+  async-dependency: done
+  inject-websession: done
+  strict-typing: done

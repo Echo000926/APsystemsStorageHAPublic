@@ -1,0 +1,139 @@
+{
+  "entity": {
+    "sensor": {
+      "battery_capacity": {
+        "default": "mdi:battery-outline"
+      },
+      "battery_manufacturer": {
+        "default": "mdi:factory"
+      },
+      "battery_model": {
+        "default": "mdi:battery-outline"
+      },
+      "battery_high_temperature": {
+        "default": "mdi:thermometer-high"
+      },
+      "battery_low_temperature": {
+        "default": "mdi:thermometer-low"
+      },
+      "battery_communication_error": {
+        "default": "mdi:battery-alert-variant-outline"
+      },
+      "battery_overvoltage": {
+        "default": "mdi:battery-alert-variant-outline"
+      },
+      "battery_undervoltage": {
+        "default": "mdi:battery-alert-variant-outline"
+      },
+      "battery_overcurrent": {
+        "default": "mdi:battery-alert-variant-outline"
+      },
+      "battery_internal_error": {
+        "default": "mdi:battery-alert-variant-outline"
+      },
+      "device_temperature_protection": {
+        "default": "mdi:thermometer-alert"
+      },
+      "device_system_error": {
+        "default": "mdi:alert-circle-outline"
+      },
+      "battery_shutdown": {
+        "default": "mdi:battery-off-outline"
+      },
+      "ongrid_abnormal": {
+        "default": "mdi:transmission-tower-off"
+      },
+      "offgrid_overcurrent": {
+        "default": "mdi:flash-alert-outline"
+      },
+      "offgrid_short_circuit": {
+        "default": "mdi:flash-triangle-outline"
+      },
+      "battery_capacity_calibration": {
+        "default": "mdi:tune"
+      },
+      "battery_soc": {
+        "default": "mdi:battery-charging-60"
+      },
+      "battery_temperature": {
+        "default": "mdi:thermometer"
+      },
+      "device_temperature": {
+        "default": "mdi:thermometer"
+      },
+      "battery_accumulated_charge_energy": {
+        "default": "mdi:battery-arrow-up-outline"
+      },
+      "battery_accumulated_discharge_energy": {
+        "default": "mdi:battery-arrow-down-outline"
+      },
+      "ongrid_accumulated_output_energy": {
+        "default": "mdi:home-export-outline"
+      },
+      "ongrid_accumulated_input_energy": {
+        "default": "mdi:home-import-outline"
+      },
+      "offgrid_accumulated_output_energy": {
+        "default": "mdi:power-plug-outline"
+      },
+      "offgrid_accumulated_input_energy": {
+        "default": "mdi:power-plug-outline"
+      },
+      "battery_power": {
+        "default": "mdi:battery-charging-outline"
+      },
+      "ongrid_power": {
+        "default": "mdi:transmission-tower"
+      },
+      "offgrid_power": {
+        "default": "mdi:power-plug-outline"
+      },
+      "battery_status": {
+        "default": "mdi:battery-check"
+      }
+    },
+    "switch": {
+      "eco_mode": {
+        "default": "mdi:leaf"
+      },
+      "off_grid_on_hold": {
+        "default": "mdi:power-plug-off-outline"
+      },
+      "control_panel_mode": {
+        "default": "mdi:tune-vertical"
+      }
+    },
+    "select": {
+      "operating_mode": {
+        "default": "mdi:cog-outline"
+      },
+      "power_limit": {
+        "default": "mdi:flash-outline"
+      }
+    },
+    "number": {
+      "depth_of_discharge": {
+        "default": "mdi:battery-low"
+      },
+      "backup_charge_power": {
+        "default": "mdi:battery-charging-high"
+      }
+    },
+    "button": {
+      "confirm_modes_settings": {
+        "default": "mdi:check-circle-outline"
+      },
+      "confirm_control_panels_settings": {
+        "default": "mdi:check-circle-outline"
+      }
+    },
+    "text": {
+      "time_configuration": {
+        "default": "mdi:clock-outline"
+      },
+      "control_panel_configuration": {
+        "default": "mdi:card-text-outline"
+      }
+    }
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "APsystems Storage Setup",
+        "description": "Set up your APsystems Storage device.",
+        "data": {
+          "ip": "Device IP Address",
+          "port": "Device Port"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure APsystems Storage",
+        "description": "Update the connection settings for your APsystems Storage device.",
+        "data": {
+          "ip": "Device IP Address",
+          "port": "Device Port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the device. Please check the IP address and port."
+    },
+    "abort": {
+      "already_configured": "This device is already configured.",
+      "reconfigure_successful": "Re-configuration was successful."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "APsystems Storage Options",
+        "description": "Adjust APsystems Storage integration settings.",
+        "data": {
+          "port": "Device Port"
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "api_error": {
+      "message": "API error communicating with the device: {error}"
+    },
+    "modes_config_failed": {
+      "message": "Modes configuration failed. The device rejected the request or returned an error code."
+    },
+    "control_panels_config_failed": {
+      "message": "Control panels configuration failed. The device rejected the request or returned an error code."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "battery_capacity": {
+        "name": "Battery Capacity"
+      },
+      "battery_manufacturer": {
+        "name": "Battery Manufacturer"
+      },
+      "battery_model": {
+        "name": "Battery Model"
+      },
+      "battery_high_temperature": {
+        "name": "Battery High Temperature"
+      },
+      "battery_low_temperature": {
+        "name": "Battery Low Temperature"
+      },
+      "battery_communication_error": {
+        "name": "Battery Communication Error"
+      },
+      "battery_overvoltage": {
+        "name": "Battery Overvoltage"
+      },
+      "battery_undervoltage": {
+        "name": "Battery Undervoltage"
+      },
+      "battery_overcurrent": {
+        "name": "Battery Overcurrent"
+      },
+      "battery_internal_error": {
+        "name": "Battery Internal Error"
+      },
+      "device_temperature_protection": {
+        "name": "Device Temperature Protection"
+      },
+      "device_system_error": {
+        "name": "Device System Error"
+      },
+      "battery_shutdown": {
+        "name": "Battery Shutdown"
+      },
+      "ongrid_abnormal": {
+        "name": "On-grid Abnormal"
+      },
+      "offgrid_overcurrent": {
+        "name": "Off-grid Overcurrent"
+      },
+      "offgrid_short_circuit": {
+        "name": "Off-grid Short Circuit"
+      },
+      "battery_capacity_calibration": {
+        "name": "Battery Capacity Calibration"
+      },
+      "battery_soc": {
+        "name": "Battery SOC"
+      },
+      "battery_temperature": {
+        "name": "Battery Temperature"
+      },
+      "device_temperature": {
+        "name": "Device Temperature"
+      },
+      "battery_accumulated_charge_energy": {
+        "name": "Battery Accumulated Charge Energy"
+      },
+      "battery_accumulated_discharge_energy": {
+        "name": "Battery Accumulated Discharge Energy"
+      },
+      "ongrid_accumulated_output_energy": {
+        "name": "On-grid Accumulated Output Energy"
+      },
+      "ongrid_accumulated_input_energy": {
+        "name": "On-grid Accumulated Input Energy"
+      },
+      "offgrid_accumulated_output_energy": {
+        "name": "Off-grid Accumulated Output Energy"
+      },
+      "offgrid_accumulated_input_energy": {
+        "name": "Off-grid Accumulated Input Energy"
+      },
+      "battery_power": {
+        "name": "Battery Power"
+      },
+      "ongrid_power": {
+        "name": "On-grid Power"
+      },
+      "offgrid_power": {
+        "name": "Off-grid Power"
+      },
+      "battery_status": {
+        "name": "Battery Status"
+      }
+    },
+    "switch": {
+      "eco_mode": {
+        "name": "Eco Mode"
+      },
+      "off_grid_on_hold": {
+        "name": "Off-grid On Hold"
+      },
+      "control_panel_mode": {
+        "name": "Control Panel Mode"
+      }
+    },
+    "select": {
+      "operating_mode": {
+        "name": "Operating Mode",
+        "state": {
+          "ai_mode": "AI Mode",
+          "self_consumption_mode": "Self-consumption Mode",
+          "time_of_use_mode": "Time-of-Use Mode",
+          "backup_mode": "Backup Mode"
+        }
+      },
+      "power_limit": {
+        "name": "Power Limit",
+        "state": {
+          "800w": "800W",
+          "2500w": "2500W"
+        }
+      }
+    },
+    "number": {
+      "depth_of_discharge": {
+        "name": "Depth of Discharge"
+      },
+      "backup_charge_power": {
+        "name": "Backup Charge Power"
+      }
+    },
+    "button": {
+      "confirm_modes_settings": {
+        "name": "Confirm Modes Settings"
+      },
+      "confirm_control_panels_settings": {
+        "name": "Confirm Control Panels Settings"
+      }
+    },
+    "text": {
+      "time_configuration": {
+        "name": "Time Configuration"
+      },
+      "control_panel_configuration": {
+        "name": "Control Panel Configuration"
+      }
+    }
+  }
+}
