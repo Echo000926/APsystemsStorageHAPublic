@@ -6,7 +6,7 @@
   "dependencies": [],
   "documentation": "https://github.com/Echo000926/APsystemsStorageHAPublic",
   "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/Echo000926/APsystemsStorageHAPublic/issues",
   "requirements": [],
-  "version": "1.0.0",
-  "issue_tracker": "https://github.com/Echo000926/APsystemsStorageHAPublic/issues"
+  "version": "1.0.0"
 }
