@@ -116,7 +116,7 @@ class APsystemsStorageModesModeSelect(
         """Return the name, appending a marker if there are pending changes."""
         if self._pending_mode_option is not None:
             return f"{self.entity_description.name} *"
-        return None  # Let HA use translation_key from entity description
+        return f"{self.entity_description.name}"
 
     @property
     def options(self) -> list[str]:
@@ -202,7 +202,7 @@ class APsystemsStorageModesPowerLimitSelect(
         """Return the name, appending a marker if there are pending changes."""
         if self._pending_power_limit_option is not None:
             return f"{self.entity_description.name} *"
-        return None  # Let HA use translation_key from entity description
+        return f"{self.entity_description.name}"
 
     @property
     def options(self) -> list[str]:
