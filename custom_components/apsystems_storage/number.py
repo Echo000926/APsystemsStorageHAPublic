@@ -90,7 +90,7 @@ class APsystemsStorageModesDODNumber(
         """Return the name, appending a marker if there are pending changes."""
         if self._pending_dod_number is not None:
             return f"{self.entity_description.name} *"
-        return None  # Let HA use translation_key from entity description
+        return f"{self.entity_description.name}"
 
     @property
     def native_value(self) -> float | None:
@@ -170,7 +170,7 @@ class APsystemsStorageModesBackupChargePowerNumber(
         """Return the name, appending a marker if there are pending changes."""
         if self._pending_number is not None:
             return f"{self.entity_description.name} *"
-        return None  # Let HA use translation_key from entity description
+        return f"{self.entity_description.name}"
 
     @property
     def native_value(self) -> float | None:
