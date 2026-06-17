@@ -83,7 +83,7 @@ class APsystemsStorageEcoSwitch(CoordinatorEntity[APsystemsStorageCoordinator], 
         """Return the name, appending a marker if there are pending changes."""
         if self._pending_state is not None:
             return f"{self.entity_description.name} *"
-        return None  # Let HA use translation_key from entity description
+        return f"{self.entity_description.name}"
 
     @property
     def is_on(self) -> bool:
@@ -153,7 +153,7 @@ class APsystemsStorageOffgridOnSwitch(CoordinatorEntity[APsystemsStorageCoordina
         """Return the name, appending a marker if there are pending changes."""
         if self._pending_state is not None:
             return f"{self.entity_description.name} *"
-        return None  # Let HA use translation_key from entity description
+        return f"{self.entity_description.name}"
 
     @property
     def is_on(self) -> bool:
@@ -225,7 +225,7 @@ class APsystemsStorageControlPanelsModeSwitch(
         """Return the name, appending a marker if there are pending changes."""
         if self._pending_state is not None:
             return f"{self.entity_description.name} *"
-        return None  # Let HA use translation_key from entity description
+        return f"{self.entity_description.name}"
 
     @property
     def is_on(self) -> bool:
