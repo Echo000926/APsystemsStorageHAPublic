@@ -1,0 +1,21 @@
+name: HACS Validation
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 0 * * *"  # 每天运行一次，防止HACS规则更新后你的仓库不合规
+  workflow_dispatch:     # 允许手动触发
+
+jobs:
+  hacs:
+    name: HACS Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: HACS Validation
+        uses: hacs/action@main
+        with:
+          category: "integration"
