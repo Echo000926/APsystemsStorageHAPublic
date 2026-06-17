@@ -89,7 +89,7 @@ class APsystemsStorageModesTimeSlotsText(
         """Return the name, appending a marker if there are pending changes."""
         if self._pending_modes_time_config is not None:
             return f"{self.entity_description.name} *"
-        return None  # Let HA use translation_key from entity description
+        return f"{self.entity_description.name}"
 
     @property
     def native_value(self) -> str:
@@ -233,7 +233,7 @@ class APsystemsStorageControlPanelsTimeSlotsText(
         """Return the name, appending a marker if there are pending changes."""
         if self._pending_controlpanels_config is not None:
             return f"{self.entity_description.name} *"
-        return None  # Let HA use translation_key from entity description
+        return f"{self.entity_description.name}"
 
     @property
     def native_value(self) -> str:
