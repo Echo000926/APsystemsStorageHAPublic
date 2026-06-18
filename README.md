@@ -151,7 +151,7 @@ The `/alarms` endpoint returns device status flags as string values. `"0"` indic
 | Off-grid Short Circuit Alarm | Short circuit detected on the off-grid output side |
 | Battery Capacity Calibration | Battery capacity calibration in progress or completed |
 
-> ⚠️ **Note**: All alarm entities are classified under the **Diagnostic** category by default and are disabled in dashboards unless explicitly enabled by the user. Each entity reports `On` when the corresponding API field equals `"1"` and `Off` when it equals `"0"`.
+> 💡 **Note**: All alarm entities are classified under the **Diagnostic** category by default and are disabled in dashboards unless explicitly enabled by the user. Each entity reports `On` when the corresponding API field equals `"1"` and `Off` when it equals `"0"`.
 
 ## How It Works
 
