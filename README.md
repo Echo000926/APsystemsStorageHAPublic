@@ -1,166 +1,182 @@
-# APsystems 储能系统(LAKE) Home Assistant 集成
+# APsystems Storage System (LAKE) Home Assistant Integration
 
 [![HACS](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz/)
 [![Maintenance](https://img.shields.io/maintenance/yes/2026)]()
 
 <img src="https://github.com/HAEdwin/homeassistant-apsystems_ecu_reader/blob/main/apsystemslogo.png?raw=true" width="3%"> **APsystems Storage**
 
-> ⚠️ **注意**: 本集成仅适用于 **APsystems 储能系统**（如 LAKE 系列）。
-> 如果您使用的是光伏微逆系统（ECU-B/R/C），请使用 [APsystems ECU Reader](https://github.com/HAEdwin/homeassistant-apsystems_ecu_reader)。
-> 如果您使用的是 EZ1 微逆，请使用 HA 官方集成 [APsystems](https://www.home-assistant.io/integrations/apsystems/)。
+> ⚠️ **Notice**: This integration is exclusively designed for **APsystems Storage Systems** (e.g., LAKE series).
+> If you are using a PV microinverter system (ECU-B/R/C), please use the [APsystems ECU Reader](https://github.com/HAEdwin/homeassistant-apsystems_ecu_reader).
+> If you are using an EZ1 microinverter, please use the official Home Assistant [APsystems](https://www.home-assistant.io/integrations/apsystems/) integration.
 
-## 概述
+## Overview
 
-APsystems Storage 是一个用于与 APsystems 储能设备（LAKE 系列）进行本地通信的 Home Assistant 自定义集成。它通过设备的本地 HTTP API 实现实时监控与配置管理，无需依赖云端服务。
+APsystems Storage is a custom Home Assistant integration designed for local communication with APsystems storage devices (LAKE series). It enables real-time monitoring and configuration management via the device's local HTTP API, eliminating any dependency on cloud services.
 
-### 核心特性
+### Key Features
 
--   📡 **纯本地控制**: 直接通过局域网 IP 与设备通信，响应迅速且稳定。
--   🔋 **全面能源监控**: 实时获取电池 SOC、温度、充放电功率、累计充放电量及并网/离网功率数据。
--   ⚙️ **深度配置管理**: 支持在 HA 内直接修改运行模式、功率限制、放电深度 (DoD) 及备用充电功率。
--   🕒 **时段策略配置**: 提供 JSON 格式的文本实体，允许高级用户自定义复杂的充放电时段策略。
--   🛡️ **完整告警诊断**: 集成电池过温/欠压/过流、通信错误、系统故障等 15+ 种状态告警传感器。
--   ✅ **批量确认机制**: 采用“本地暂存 + 手动确认”的设计，避免误操作，所有配置更改需点击确认按钮后才会写入设备。
--   🔄 **乐观更新**: 配置下发后立即更新 UI 状态并自动刷新设备数据，提供流畅的操作体验。
+- 📡 **Pure Local Control**: Communicates directly with the device over the LAN IP, ensuring fast and stable response times.
+- 🔋 **Comprehensive Energy Monitoring**: Provides real-time data on battery SOC, temperature, charge/discharge power, cumulative energy throughput, and on-grid/off-grid power.
+- ⚙️ **Advanced Configuration Management**: Allows direct modification of operating modes, power limits, Depth of Discharge (DoD), and backup charging power within Home Assistant.
+- 🕒 **Time-of-Use Strategy Configuration**: Offers JSON-formatted text entities for advanced users to define complex charge/discharge scheduling strategies.
+- 🛡️ **Complete Diagnostic Alerts**: Integrates over 15 status alert sensors, including battery over/under-temperature, over/under-voltage, overcurrent, communication errors, and system faults.
+- ✅ **Batch Confirmation Mechanism**: Utilizes a "local staging + manual confirmation" design to prevent accidental changes; all configuration modifications are only written to the device after clicking the confirm button.
+- 🔄 **Optimistic Updates**: Instantly updates the UI state and automatically refreshes device data upon successful configuration delivery, providing a seamless user experience.
 
-## 支持设备
+## Supported Devices
 
-| 设备类型 | 型号示例 | 备注 |
+| Device Type | Model Examples | Notes |
 | :--- | :--- | :--- |
-| 储能一体机 | LAKE 系列 | ✅ 完全支持 |
-| 光伏微逆 ECU | ECU-B / ECU-R / ECU-C | ❌ 不支持 (请使用 ECU Reader) |
-| EZ1 微逆 | EZ1-M | ❌ 不支持 (请使用官方集成) |
+| All-in-One ESS | LAKE Series | ✅ Fully Supported |
+| PV Microinverter ECU | ECU-B / ECU-R / ECU-C | ❌ Not Supported (Please use ECU Reader) |
+| EZ1 Microinverter | EZ1-M | ❌ Not Supported (Please use Official Integration) |
 
-## 前置要求
+## Prerequisites
 
--   Home Assistant 已安装 HACS。
--   储能设备已连接至局域网并分配了 **固定 IP 地址**。
--   Home Assistant 能够通过网络访问该设备的 HTTP 端口（默认 80）。
--   确保没有其他自动化或集成频繁占用设备通信接口。
+- HACS must be installed in your Home Assistant instance.
+- The energy storage device must be connected to the local network and assigned a **static IP address**.
+- Home Assistant must have network access to the device's HTTP port (default: 80).
+- Ensure no other automations or integrations are frequently occupying the device's communication interface.
 
-## 安装
+## Installation
 
-### 通过 HACS 安装
+### Installation via HACS
 
-1.  打开 HACS → 集成 → 点击右上角菜单 → 自定义仓库。
-2.  添加本集成的 GitHub 仓库地址。
-3.  搜索 "APsystems Storage" 并下载。
-4.  重启 Home Assistant。
-5.  前往 **设置** → **设备与服务** → **+ 添加集成** → 搜索 "APsystems Storage"。
+1. Navigate to HACS → Integrations → Click the three-dot menu in the top right corner → Custom repositories.
+2. Add the GitHub repository URL for this integration.
+3. Search for "APsystems Storage" and download it.
+4. Restart Home Assistant.
+5. Go to **Settings** → **Devices & Services** → **+ Add Integration** → Search for "APsystems Storage".
 
-## 配置选项
+## Configuration Options
 
-### 初始配置
+### Initial Setup
 
-在添加集成时，您需要提供以下信息：
+When adding the integration, you will need to provide the following information:
 
-| 参数 | 说明 | 默认值 |
+| Parameter | Description | Default Value |
 | :--- | :--- | :--- |
-| IP Address | 储能设备的局域网 IP 地址 | - |
-| Port | 设备 HTTP API 端口 | 80 |
+| IP Address | The LAN IP address of the energy storage device | - |
+| Port | The HTTP API port of the device | 80 |
 
-> 💡 集成会在创建前自动测试连接。如果无法连接，请检查 IP 地址、端口及网络连通性。
+> 💡 The integration will automatically test the connection before creation. If the connection fails, please verify the IP address, port, and overall network connectivity.
 
-### 重新配置
+### Reconfiguration
 
-支持在不删除集成的情况下修改 IP 和端口设置。进入集成页面 → 点击三点菜单 → 重新配置。
+You can modify the IP address and port settings without deleting the integration. Navigate to the integration page → Click the three-dot menu → Select Reconfigure.
 
-## 实体说明
+## Entity Reference
 
-本集成提供以下类型的实体，分为 **监控类** 和 **配置类** 两大类别：
+This integration provides the following entity types, categorized into **Monitoring** and **Configuration**:
 
-### 📊 监控传感器 (Sensors)
+### 📊 Monitoring Sensors
 
-| 实体名称 | 单位 | 说明 |
+| Entity Name | Unit | Description |
 | :--- | :--- | :--- |
-| Battery SOC | % | 电池剩余电量 |
-| Battery Power | W | 电池实时充放电功率 |
-| Battery Temperature | °C | 电池温度 |
-| Device Temperature | °C | 设备机内温度 |
-| On-grid Power | W | 并网侧实时功率 |
-| Off-grid Power | W | 离网侧实时功率 |
-| Battery Accumulated Charge Energy | kWh | 电池累计充电量 |
-| Battery Accumulated Discharge Energy | kWh | 电池累计放电量 |
-| On-grid Accumulated Output/Input Energy | kWh | 并网累计输出/输入电量 |
-| Off-grid Accumulated Output/Input Energy | kWh | 离网累计输出/输入电量 |
-| Battery Capacity | kWh | 电池额定容量 |
-| Battery Manufacturer / Model | - | 电池厂商及型号信息 |
-| Battery Status | - | 电池工作状态 |
+| Battery SOC | % | Remaining battery state of charge |
+| Battery Power | W | Real-time battery charge/discharge power |
+| Battery Temperature | °C | Battery temperature |
+| Device Temperature | °C | Internal device temperature |
+| On-grid Power | W | Real-time on-grid side power |
+| Off-grid Power | W | Real-time off-grid side power |
+| Battery Accumulated Charge Energy | kWh | Cumulative battery charging energy |
+| Battery Accumulated Discharge Energy | kWh | Cumulative battery discharging energy |
+| On-grid Accumulated Output/Input Energy | kWh | Cumulative on-grid export/import energy |
+| Off-grid Accumulated Output/Input Energy | kWh | Cumulative off-grid export/import energy |
+| Battery Capacity | kWh | Rated battery capacity |
+| Battery Manufacturer / Model | - | Battery manufacturer and model information |
+| Battery Status | - | Current battery operating status |
 
-### 🔧 配置实体 (Config Entities)
+### 🔧 Configuration Entities
 
-> ⚠️ **重要提示**: 所有配置实体的修改均为 **本地暂存**，UI 上会显示 `*` 标记。必须点击对应的 **Confirm** 按钮后，更改才会真正写入设备。
+> ⚠️ **Important Notice**: All modifications to configuration entities are **locally staged**. A `*` marker will appear next to the entity name in the UI. Changes are only written to the physical device after clicking the corresponding **Confirm** button.
 
-#### 开关 (Switch)
+#### Switches
 
-| 实体 | 说明 |
+| Entity | Description |
 | :--- | :--- |
-| Eco Mode | 节能模式开关 |
-| Off-grid On Hold | 离网保持开启开关 |
-| Control Panel Mode | 控制面板模式开关 |
+| Eco Mode | Toggle for energy-saving mode |
+| Off-grid On Hold | Toggle to maintain off-grid output |
+| Control Panel Mode | Toggle for control panel mode |
 
-#### 选择器 (Select)
+#### Selectors
 
-| 实体 | 可选值 | 说明 |
+| Entity | Options | Description |
 | :--- | :--- | :--- |
-| Operating Mode | AI Mode / Self Consumption / Time of Use / Backup | 系统运行模式 |
-| Power Limit | 800W / 2500W | 功率上限设置 |
+| Operating Mode | AI Mode / Self Consumption / Time of Use / Backup | System operating mode selection |
+| Power Limit | 800W / 2500W | Maximum power limit setting |
 
-#### 数值 (Number)
+#### Numbers
 
-| 实体 | 范围 | 单位 | 说明 |
+| Entity | Range | Unit | Description |
 | :--- | :--- | :--- | :--- |
-| Depth of Discharge | 15 - 100 | % | 放电深度设置 |
-| Backup Charge Power | 0 - 2500 | W | 备用模式充电功率 |
+| Depth of Discharge | 15 - 100 | % | Depth of discharge (DoD) setting |
+| Backup Charge Power | 0 - 2500 | W | Charging power limit in backup mode |
 
-#### 文本 (Text)
+#### Text Inputs
 
-| 实体 | 格式 | 说明 |
+| Entity | Format | Description |
 | :--- | :--- | :--- |
-| Time Configuration | JSON Array | 运行模式时段策略配置 |
-| Control Panel Configuration | JSON Object | 控制面板时段策略配置 |
+| Time Configuration | JSON Array | Time-of-use scheduling strategy for operating modes |
+| Control Panel Configuration | JSON Object | Scheduling strategy for control panel settings |
 
-#### 按钮 (Button)
+#### Buttons
 
-| 实体 | 说明 |
+| Entity | Description |
 | :--- | :--- |
-| Confirm Modes Settings | 将上述所有模式相关配置批量写入设备 |
-| Confirm Control Panels Settings | 将控制面板相关配置批量写入设备 |
+| Confirm Modes Settings | Batch-writes all staged mode-related configurations to the device |
+| Confirm Control Panels Settings | Batch-writes all staged control panel configurations to the device |
 
-### 🔔 诊断告警 (Diagnostic)
+### 🔔 Diagnostic Alerts
 
-集成提供完整的设备告警状态，包括：电池过温/低温、过压/欠压、过流、通信错误、内部错误、设备温度保护、系统错误、电池关机、并网异常、离网过流/短路、电池容量校准等。这些实体默认归类于 Diagnostic 分类。
+The integration exposes comprehensive device alert states, including: battery over/under-temperature, over/under-voltage, overcurrent, communication errors, internal faults, device thermal protection, system errors, battery shutdown, on-grid anomalies, off-grid overcurrent/short circuit, and battery capacity calibration. These entities are classified under the Diagnostic category by default.
 
-## 工作原理
+
+The `/alarms` endpoint returns device status flags as string values. `"0"` indicates normal status, while `"1"` indicates an active alarm or abnormal condition. All fields listed below are exposed as diagnostic binary sensors in Home Assistant.
+
+| Entity | Description |
+| :--- | :--- | :--- |
+| Battery High Temperature Alarm | Battery temperature exceeds safe upper limit |
+| Battery Low Temperature Alarm | Battery temperature falls below safe lower limit |
+| Battery Communication Error | Communication failure between device and BMS |
+| Battery Overvoltage Alarm | Battery voltage exceeds maximum threshold |
+| Battery Undervoltage Alarm | Battery voltage drops below minimum threshold |
+| Battery Overcurrent Alarm | Battery charge/discharge current exceeds safe limit |
+| Battery Internal Error | Internal fault detected within the battery pack |
+| Device Temperature Protection | Inverter/PCS internal temperature protection triggered |
+| Device System Error | General system-level fault on the storage device |
+| Battery Shutdown Alarm | Battery has entered shutdown state |
+| Grid Abnormal Alarm | On-grid side voltage/frequency anomaly detected |
+| Off-grid Overcurrent Alarm | Off-grid side output current exceeds safe limit |
+| Off-grid Short Circuit Alarm | Short circuit detected on the off-grid output side |
+| Battery Capacity Calibration | Battery capacity calibration in progress or completed |
+
+> ⚠️ **Note**: All alarm entities are classified under the **Diagnostic** category by default and are disabled in dashboards unless explicitly enabled by the user. Each entity reports `On` when the corresponding API field equals `"1"` and `Off` when it equals `"0"`.
+
+## How It Works
 
 ```text
 ┌─────────────┐     HTTP GET      ┌──────────────────┐
 │             │ ◄──────────────── │                  │
 │  Home       │                   │  APsystems       │
 │  Assistant  │     HTTP POST     │  Storage Device  │
-│             │ ────────────────► │  (ELS/ELT)       │
+│             │ ────────────────► │  (LAKE)       │
 └─────────────┘   (Confirm Only)  └──────────────────┘
 ```
 
-### 本集成采用 “本地暂存 + 批量确认 + 乐观更新” 三阶段设计，确保配置安全与用户体验兼得：
 
-1.  数据采集: Coordinator 定期轮询 /devices, /alarms, /energies, /modes, /control-panels 五个端点。
-2.  本地暂存: 用户在 UI 修改配置时，变更仅保存在内存中，实体名称显示 * 标记。
-3.  批量提交: 用户点击 Confirm 按钮后，集成收集所有暂存的配置项，组装为统一 payload 发送至设备。
-4.  乐观更新: 提交成功后立即更新 Coordinator 数据并清除所有暂存标记，随后触发一次即时刷新以同步设备真实状态。
+### This integration employs a three-stage architecture — **"Local Staging + Batch Confirmation + Optimistic Updates"** — to balance configuration safety with an optimal user experience:
 
+1.  **Data Collection**: The Coordinator periodically polls five endpoints: `/devices`, `/alarms`, `/energies`, `/modes`, and `/control-panels`.
+2.  **Local Staging**: When a user modifies any configuration via the UI, changes are stored exclusively in memory. Affected entities display a `*` suffix to indicate a pending change. No commands are sent to the device at this stage.
+3.  **Batch Submission**: Upon clicking a Confirm button, the integration aggregates all staged parameters into a unified payload and transmits it to the device via a single HTTP POST request.
+4.  **Optimistic Update**: After successful submission, the Coordinator cache is updated immediately, all staging markers are cleared, and an instant refresh is triggered to synchronize the UI with the actual device state.
 
-💡 此设计显著降低通信频率（避免每改一项就发请求），提升稳定性，并提供清晰的操作反馈。
+💡 This design significantly reduces API call frequency (avoiding per-parameter requests), enhances communication stability, and provides clear operational feedback.
 
-## 故障排除
+## Troubleshooting
 
-表格
-
-| 问题现象       | 可能原因                                      | 解决方案                                                                 |
-|----------------|---------------------------------------------|--------------------------------------------------------------------------|
-| 无法连接设备   | • IP 地址错误 / 端口非 80<br>• 设备未启用 HTTP API<br>• 防火墙/路由器拦截 | 1. 在 HA 中 `ping <设备IP>`<br>2. 浏览器访问 `http://<设备IP>` 确认网页可打开<br>3. 检查设备 Web 界面 → 设置 → 网络 → 确保 “HTTP 服务” 已启用 |
-| 配置写入失败   | • JSON 格式错误（尤其 Time Configuration）<br>• 设备忙（正在处理其他请求） | 1. 使用 JSONLint 校验 Text 实体内容<br>2. 等待 30 秒后重试|
-
-
-
-
+| Symptom | Possible Causes | Solutions |
+| :--- | :--- | :--- |
+| Unable to connect to device | • Incorrect IP address or non-standard port<br>• HTTP API not enabled on device<br>• Firewall/router blocking traffic | 1. Run `ping <device_IP>` from the HA host<br>2. Access `http://<device_IP>` in a browser to verify web interface availability<br>3. Navigate to Device Web UI → Settings → Network → Ensure "HTTP Service" is enabled |
+| Configuration write failure | • Malformed JSON (especially in Time Configuration)<br>• Device busy processing other requests | 1. Validate Text entity content using JSONLint<br>2. Wait 30 seconds and retry |
