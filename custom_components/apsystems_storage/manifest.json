@@ -5,6 +5,7 @@
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/Echo000926/APsystemsStorageHAPublic",
+  "issue_tracker": "https://github.com/Echo000926/APsystemsStorageHAPublic/issues",
   "iot_class": "local_polling",
   "requirements": [],
   "version": "2.1.0"
